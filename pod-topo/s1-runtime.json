@@ -1,0 +1,577 @@
+{
+  "target": "bmv2",
+  "p4info": "build/sdn-psfp.p4.p4info.txtpb",
+  "bmv2_json": "build/sdn-psfp.json",
+  "table_entries": [
+    {
+      "table": "IngressImpl.ipv4_c.ipv4",
+      "default_action": true,
+      "action_name": "IngressImpl.ipv4_c.drop",
+      "action_params": {}
+    },
+    {
+      "table": "IngressImpl.ipv4_c.ipv4",
+      "match": {
+        "hdr.ipv4.dstAddr": ["10.0.1.1", 32]
+      },
+      "action_name": "IngressImpl.ipv4_c.ipv4_forward",
+      "action_params": {
+        "eth_dst_addr": "08:00:00:00:01:11",
+        "port": 1
+      }
+    },
+    {
+      "table": "IngressImpl.ipv4_c.ipv4",
+      "match": {
+        "hdr.ipv4.dstAddr": ["10.0.2.2", 32]
+      },
+      "action_name": "IngressImpl.ipv4_c.ipv4_forward",
+      "action_params": {
+        "eth_dst_addr": "08:00:00:00:02:22",
+        "port": 2
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_id",
+      "match": {
+        "hdr.ethernet.dst_addr": "08:00:00:00:02:22",
+        "hdr.eth_802_1q.vid": 1
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.assign_stream_handle",
+      "action_params": {
+        "stream_handle": 1,
+        "active": 1,
+        "stream_blocked_due_to_oversize_frame_enable": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_id",
+      "match": {
+        "hdr.ethernet.dst_addr": "08:00:00:00:02:22",
+        "hdr.eth_802_1q.vid": 2
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.assign_stream_handle",
+      "action_params": {
+        "stream_handle": 2,
+        "active": 1,
+        "stream_blocked_due_to_oversize_frame_enable": 0
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_id",
+      "match": {
+        "hdr.ethernet.dst_addr": "08:00:00:00:02:22",
+        "hdr.eth_802_1q.vid": 3
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.assign_stream_handle",
+      "action_params": {
+        "stream_handle": 3,
+        "active": 1,
+        "stream_blocked_due_to_oversize_frame_enable": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_id",
+      "match": {
+        "hdr.ethernet.dst_addr": "08:00:00:00:01:11",
+        "hdr.eth_802_1q.vid": 4
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.assign_stream_handle",
+      "action_params": {
+        "stream_handle": 4,
+        "active": 1,
+        "stream_blocked_due_to_oversize_frame_enable": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_id",
+      "match": {
+        "hdr.ethernet.dst_addr": "08:00:00:00:01:11",
+        "hdr.eth_802_1q.vid": 5
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.assign_stream_handle",
+      "action_params": {
+        "stream_handle": 5,
+        "active": 1,
+        "stream_blocked_due_to_oversize_frame_enable": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_filter_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 1
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.assign_gate_and_meter",
+      "action_params": {
+        "stream_gate_id": 1,
+        "flow_meter_instance_id": 1,
+        "gate_closed_due_to_invalid_rx_enable": 1,
+        "gate_closed_due_to_octets_exceeded_enable": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_filter_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 2
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.assign_gate_and_meter",
+      "action_params": {
+        "stream_gate_id": 2,
+        "flow_meter_instance_id": 2,
+        "gate_closed_due_to_invalid_rx_enable": 1,
+        "gate_closed_due_to_octets_exceeded_enable": 0
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_filter_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 3
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.assign_gate_and_meter",
+      "action_params": {
+        "stream_gate_id": 3,
+        "flow_meter_instance_id": 1,
+        "gate_closed_due_to_invalid_rx_enable": 0,
+        "gate_closed_due_to_octets_exceeded_enable": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_filter_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 4
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.assign_gate_and_meter",
+      "action_params": {
+        "stream_gate_id": 4,
+        "flow_meter_instance_id": 2,
+        "gate_closed_due_to_invalid_rx_enable": 0,
+        "gate_closed_due_to_octets_exceeded_enable": 0
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_filter_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 5
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.assign_gate_and_meter",
+      "action_params": {
+        "stream_gate_id": 1,
+        "flow_meter_instance_id": 1,
+        "gate_closed_due_to_invalid_rx_enable": 1,
+        "gate_closed_due_to_octets_exceeded_enable": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_id_active",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 1
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.overwrite_stream_active",
+      "action_params": {
+        "eth_dst_addr": "08:00:00:00:02:22",
+        "vid": 1,
+        "pcp": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_id_active",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 2
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.overwrite_stream_active",
+      "action_params": {
+        "eth_dst_addr": "08:00:00:00:02:22",
+        "vid": 2,
+        "pcp": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_id_active",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 3
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.overwrite_stream_active",
+      "action_params": {
+        "eth_dst_addr": "08:00:00:00:02:22",
+        "vid": 3,
+        "pcp": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_id_active",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 4
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.overwrite_stream_active",
+      "action_params": {
+        "eth_dst_addr": "08:00:00:00:01:11",
+        "vid": 4,
+        "pcp": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.stream_id_active",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 5
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.overwrite_stream_active",
+      "action_params": {
+        "eth_dst_addr": "08:00:00:00:01:11",
+        "vid": 5,
+        "pcp": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.max_sdu_filter",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 1,
+        "hdr.eth_802_1q.pcp": [1, 7],
+        "std_md.packet_length": [64, 1400]
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.none",
+      "action_params": {},
+      "priority": 100
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.max_sdu_filter",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 2,
+        "hdr.eth_802_1q.pcp": [0, 7],
+        "std_md.packet_length": [64, 1400]
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.none",
+      "action_params": {},
+      "priority": 99
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.max_sdu_filter",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 3,
+        "hdr.eth_802_1q.pcp": [1, 7],
+        "std_md.packet_length": [64, 1200]
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.none",
+      "action_params": {},
+      "priority": 98
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.max_sdu_filter",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 4,
+        "hdr.eth_802_1q.pcp": [0, 7],
+        "std_md.packet_length": [64, 1500]
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.none",
+      "action_params": {},
+      "priority": 97
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamFilter_c.max_sdu_filter",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_handle": 5,
+        "hdr.eth_802_1q.pcp": [0, 7],
+        "std_md.packet_length": [64, 1500]
+      },
+      "action_name": "IngressImpl.psfp_c.streamFilter_c.none",
+      "action_params": {},
+      "priority": 96
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 1,
+        "meta.ingress_md.diff_ts": [0, 1]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 0,
+        "ipv": 2,
+        "interval_identifier": 1,
+        "max_octects_interval": 5000
+      },
+      "priority": 99
+    }
+    ,
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 1,
+        "meta.ingress_md.diff_ts": [1, 4]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 1,
+        "ipv": 2,
+        "interval_identifier": 2,
+        "max_octects_interval": 0
+      },
+      "priority": 98
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 1,
+        "meta.ingress_md.diff_ts": [4, 8]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 0,
+        "ipv": 2,
+        "interval_identifier": 3,
+        "max_octects_interval": 3000
+      },
+      "priority": 97
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 1,
+        "meta.ingress_md.diff_ts": [8, 10]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 1,
+        "ipv": 2,
+        "interval_identifier": 4,
+        "max_octects_interval": 0
+      },
+      "priority": 96
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 2,
+        "meta.ingress_md.diff_ts": [0, 3]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 0,
+        "ipv": 9,
+        "interval_identifier": 1,
+        "max_octects_interval": 5000
+      },
+      "priority": 100
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 2,
+        "meta.ingress_md.diff_ts": [3, 5]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 1,
+        "ipv": 9,
+        "interval_identifier": 2,
+        "max_octects_interval": 0
+      },
+      "priority": 99
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 2,
+        "meta.ingress_md.diff_ts": [5, 8]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 0,
+        "ipv": 9,
+        "interval_identifier": 3,
+        "max_octects_interval": 5000
+      },
+      "priority": 98
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 3,
+        "meta.ingress_md.diff_ts": [0, 1]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 1,
+        "ipv": 12,
+        "interval_identifier": 1,
+        "max_octects_interval": 0
+      },
+      "priority": 99
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 3,
+        "meta.ingress_md.diff_ts": [1, 6]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 0,
+        "ipv": 12,
+        "interval_identifier": 2,
+        "max_octects_interval": 4000
+      },
+      "priority": 98
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 3,
+        "meta.ingress_md.diff_ts": [6, 8]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 1,
+        "ipv": 12,
+        "interval_identifier": 3,
+        "max_octects_interval": 0
+      },
+      "priority": 97
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 3,
+        "meta.ingress_md.diff_ts": [7, 9]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 0,
+        "ipv": 12,
+        "interval_identifier": 4,
+        "max_octects_interval": 6000
+      },
+      "priority": 96
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 3,
+        "meta.ingress_md.diff_ts": [9, 11]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 1,
+        "ipv": 12,
+        "interval_identifier": 5,
+        "max_octects_interval": 0
+      },
+      "priority": 95
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 4,
+        "meta.ingress_md.diff_ts": [0, 5]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 0,
+        "ipv": 12,
+        "interval_identifier": 1,
+        "max_octects_interval": 5000
+      },
+      "priority": 101
+    },
+    {
+      "table": "IngressImpl.psfp_c.streamGate_c.stream_gate_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 4,
+        "meta.ingress_md.diff_ts": [5, 10]
+      },
+      "action_name": "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv",
+      "action_params": {
+        "gate_state": 1,
+        "ipv": 12,
+        "interval_identifier": 2,
+        "max_octects_interval": 5000
+      },
+      "priority": 100
+    },
+    {
+      "table": "IngressImpl.psfp_c.flowMeter_c.flow_meter_config",
+      "match": {
+        "meta.ingress_md.stream_filter.flow_meter_instance_id": 1
+      },
+      "action_name": "IngressImpl.psfp_c.flowMeter_c.set_flow_meter_config",
+      "action_params": {
+        "dropOnYellow": 1,
+        "markAllFramesRedEnable": 1,
+        "colorAware": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.flowMeter_c.flow_meter_config",
+      "match": {
+        "meta.ingress_md.stream_filter.flow_meter_instance_id": 2
+      },
+      "action_name": "IngressImpl.psfp_c.flowMeter_c.set_flow_meter_config",
+      "action_params": {
+        "dropOnYellow": 1,
+        "markAllFramesRedEnable": 0,
+        "colorAware": 1
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.flowMeter_c.flow_meter_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.flow_meter_instance_id": 1
+      },
+      "action_name": "IngressImpl.psfp_c.flowMeter_c.set_color_direct",
+      "action_params": {
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.flowMeter_c.flow_meter_instance",
+      "match": {
+        "meta.ingress_md.stream_filter.flow_meter_instance_id": 2
+      },
+      "action_name": "IngressImpl.psfp_c.flowMeter_c.set_color_direct",
+      "action_params": {
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.hyperperiod_config",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 1
+      },
+      "action_name": "IngressImpl.psfp_c.assign_hyperperiod_config",
+      "action_params": {
+        "index": 1,
+        "hyperperiod_ts": 10
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.hyperperiod_config",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 2
+      },
+      "action_name": "IngressImpl.psfp_c.assign_hyperperiod_config",
+      "action_params": {
+        "index": 2,
+        "hyperperiod_ts": 8
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.hyperperiod_config",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 3
+      },
+      "action_name": "IngressImpl.psfp_c.assign_hyperperiod_config",
+      "action_params": {
+        "index": 3,
+        "hyperperiod_ts": 13
+      }
+    },
+    {
+      "table": "IngressImpl.psfp_c.hyperperiod_config",
+      "match": {
+        "meta.ingress_md.stream_filter.stream_gate_id": 4
+      },
+      "action_name": "IngressImpl.psfp_c.assign_hyperperiod_config",
+      "action_params": {
+        "index": 4,
+        "hyperperiod_ts": 10
+      }
+    }
+  ]
+}

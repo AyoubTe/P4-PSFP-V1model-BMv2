@@ -1,0 +1,892 @@
+# proto-file: p4/config/v1/p4info.proto
+# proto-message: p4.config.v1.P4Info
+
+pkg_info {
+  arch: "v1model"
+}
+tables {
+  preamble {
+    id: 38517233
+    name: "IngressImpl.psfp_c.hyperperiod_state"
+    alias: "hyperperiod_state"
+  }
+  match_fields {
+    id: 1
+    name: "meta.ingress_md.stream_filter.stream_gate_id"
+    bitwidth: 12
+    match_type: EXACT
+  }
+  action_refs {
+    id: 21007766
+  }
+  action_refs {
+    id: 21257015
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  initial_default_action {
+    action_id: 21257015
+  }
+  size: 5
+}
+tables {
+  preamble {
+    id: 36254450
+    name: "IngressImpl.psfp_c.streamFilter_c.stream_id"
+    alias: "stream_id"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ethernet.dst_addr"
+    bitwidth: 48
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "hdr.eth_802_1q.vid"
+    bitwidth: 12
+    match_type: EXACT
+  }
+  action_refs {
+    id: 23073272
+  }
+  action_refs {
+    id: 21257015
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  initial_default_action {
+    action_id: 21257015
+  }
+  direct_resource_ids: 332440727
+  size: 5
+}
+tables {
+  preamble {
+    id: 36000467
+    name: "IngressImpl.psfp_c.streamFilter_c.stream_id_active"
+    alias: "stream_id_active"
+  }
+  match_fields {
+    id: 1
+    name: "meta.ingress_md.stream_filter.stream_handle"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  action_refs {
+    id: 19013214
+  }
+  action_refs {
+    id: 21257015
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  initial_default_action {
+    action_id: 21257015
+  }
+  direct_resource_ids: 324990094
+  size: 256
+}
+tables {
+  preamble {
+    id: 41560028
+    name: "IngressImpl.psfp_c.streamFilter_c.stream_filter_instance"
+    alias: "stream_filter_instance"
+  }
+  match_fields {
+    id: 1
+    name: "meta.ingress_md.stream_filter.stream_handle"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16862355
+  }
+  action_refs {
+    id: 21257015
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  initial_default_action {
+    action_id: 21257015
+  }
+  direct_resource_ids: 334000483
+  size: 5
+}
+tables {
+  preamble {
+    id: 42552499
+    name: "IngressImpl.psfp_c.streamFilter_c.max_sdu_filter"
+    alias: "max_sdu_filter"
+  }
+  match_fields {
+    id: 1
+    name: "meta.ingress_md.stream_filter.stream_handle"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "hdr.eth_802_1q.pcp"
+    bitwidth: 3
+    match_type: TERNARY
+  }
+  match_fields {
+    id: 3
+    name: "std_md.packet_length"
+    bitwidth: 32
+    match_type: RANGE
+  }
+  action_refs {
+    id: 32025333
+  }
+  action_refs {
+    id: 21257015
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  initial_default_action {
+    action_id: 21257015
+  }
+  direct_resource_ids: 319351701
+  size: 512
+}
+tables {
+  preamble {
+    id: 48007557
+    name: "IngressImpl.psfp_c.streamGate_c.stream_gate_instance"
+    alias: "stream_gate_instance"
+  }
+  match_fields {
+    id: 1
+    name: "meta.ingress_md.stream_filter.stream_gate_id"
+    bitwidth: 12
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "meta.ingress_md.diff_ts"
+    bitwidth: 64
+    match_type: RANGE
+  }
+  action_refs {
+    id: 26524057
+  }
+  action_refs {
+    id: 21257015
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  initial_default_action {
+    action_id: 21257015
+  }
+  direct_resource_ids: 332096724
+  size: 256
+}
+tables {
+  preamble {
+    id: 36179620
+    name: "IngressImpl.psfp_c.flowMeter_c.flow_meter_config"
+    alias: "flow_meter_config"
+  }
+  match_fields {
+    id: 1
+    name: "meta.ingress_md.stream_filter.flow_meter_instance_id"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  action_refs {
+    id: 17955799
+  }
+  action_refs {
+    id: 21257015
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  initial_default_action {
+    action_id: 21257015
+  }
+  size: 5
+}
+tables {
+  preamble {
+    id: 41006802
+    name: "IngressImpl.psfp_c.flowMeter_c.flow_meter_instance"
+    alias: "flow_meter_instance"
+  }
+  match_fields {
+    id: 1
+    name: "meta.ingress_md.stream_filter.flow_meter_instance_id"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  action_refs {
+    id: 31308947
+  }
+  action_refs {
+    id: 21257015
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  initial_default_action {
+    action_id: 21257015
+  }
+  direct_resource_ids: 358022472
+  size: 5
+}
+tables {
+  preamble {
+    id: 42185026
+    name: "IngressImpl.ipv4_c.ipv4"
+    alias: "ipv4"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv4.dstAddr"
+    bitwidth: 32
+    match_type: LPM
+  }
+  action_refs {
+    id: 30597100
+  }
+  action_refs {
+    id: 26173455
+  }
+  initial_default_action {
+    action_id: 26173455
+  }
+  direct_resource_ids: 323335299
+  size: 1024
+}
+actions {
+  preamble {
+    id: 21257015
+    name: "NoAction"
+    alias: "NoAction"
+    annotations: "@noWarn(\"unused\")"
+  }
+}
+actions {
+  preamble {
+    id: 21007766
+    name: "IngressImpl.psfp_c.set_hyperperiod_state"
+    alias: "set_hyperperiod_state"
+  }
+  params {
+    id: 1
+    name: "gate_id"
+    bitwidth: 32
+  }
+  params {
+    id: 2
+    name: "hyperperiod_ts"
+    bitwidth: 48
+  }
+  params {
+    id: 3
+    name: "last_hyperperiod"
+    bitwidth: 48
+  }
+}
+actions {
+  preamble {
+    id: 19013214
+    name: "IngressImpl.psfp_c.streamFilter_c.overwrite_stream_active"
+    alias: "overwrite_stream_active"
+  }
+  params {
+    id: 1
+    name: "eth_dst_addr"
+    bitwidth: 48
+  }
+  params {
+    id: 2
+    name: "vid"
+    bitwidth: 12
+  }
+  params {
+    id: 3
+    name: "pcp"
+    bitwidth: 3
+  }
+}
+actions {
+  preamble {
+    id: 23073272
+    name: "IngressImpl.psfp_c.streamFilter_c.assign_stream_handle"
+    alias: "assign_stream_handle"
+  }
+  params {
+    id: 1
+    name: "stream_handle"
+    bitwidth: 16
+  }
+  params {
+    id: 2
+    name: "active"
+    bitwidth: 1
+  }
+  params {
+    id: 3
+    name: "stream_blocked_due_to_oversize_frame_enable"
+    bitwidth: 1
+  }
+}
+actions {
+  preamble {
+    id: 16862355
+    name: "IngressImpl.psfp_c.streamFilter_c.assign_gate_and_meter"
+    alias: "assign_gate_and_meter"
+  }
+  params {
+    id: 1
+    name: "stream_gate_id"
+    bitwidth: 12
+  }
+  params {
+    id: 2
+    name: "flow_meter_instance_id"
+    bitwidth: 16
+  }
+  params {
+    id: 3
+    name: "gate_closed_due_to_invalid_rx_enable"
+    bitwidth: 1
+  }
+  params {
+    id: 4
+    name: "gate_closed_due_to_octets_exceeded_enable"
+    bitwidth: 1
+  }
+}
+actions {
+  preamble {
+    id: 32025333
+    name: "IngressImpl.psfp_c.streamFilter_c.none"
+    alias: "none"
+  }
+}
+actions {
+  preamble {
+    id: 26524057
+    name: "IngressImpl.psfp_c.streamGate_c.set_gate_and_ipv"
+    alias: "set_gate_and_ipv"
+  }
+  params {
+    id: 1
+    name: "gate_state"
+    bitwidth: 1
+  }
+  params {
+    id: 2
+    name: "ipv"
+    bitwidth: 4
+  }
+  params {
+    id: 3
+    name: "interval_identifier"
+    bitwidth: 12
+  }
+  params {
+    id: 4
+    name: "max_octects_interval"
+    bitwidth: 32
+  }
+}
+actions {
+  preamble {
+    id: 21427283
+    name: "IngressImpl.psfp_c.flowMeter_c.drop_packet"
+    alias: "drop_packet"
+  }
+}
+actions {
+  preamble {
+    id: 31308947
+    name: "IngressImpl.psfp_c.flowMeter_c.set_color_direct"
+    alias: "set_color_direct"
+  }
+}
+actions {
+  preamble {
+    id: 17955799
+    name: "IngressImpl.psfp_c.flowMeter_c.set_flow_meter_config"
+    alias: "set_flow_meter_config"
+  }
+  params {
+    id: 1
+    name: "dropOnYellow"
+    bitwidth: 1
+  }
+  params {
+    id: 2
+    name: "markAllFramesRedEnable"
+    bitwidth: 1
+  }
+  params {
+    id: 3
+    name: "colorAware"
+    bitwidth: 1
+  }
+}
+actions {
+  preamble {
+    id: 30597100
+    name: "IngressImpl.ipv4_c.ipv4_forward"
+    alias: "ipv4_forward"
+  }
+  params {
+    id: 1
+    name: "eth_dst_addr"
+    bitwidth: 48
+  }
+  params {
+    id: 2
+    name: "port"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 26173455
+    name: "IngressImpl.ipv4_c.drop"
+    alias: "drop"
+  }
+}
+counters {
+  preamble {
+    id: 318387686
+    name: "IngressImpl.psfp_c.streamFilter_c.missed_max_sdu_filter_counter"
+    alias: "missed_max_sdu_filter_counter"
+  }
+  spec {
+    unit: PACKETS
+  }
+  size: 5
+}
+counters {
+  preamble {
+    id: 310008619
+    name: "IngressImpl.psfp_c.streamFilter_c.overall_counter"
+    alias: "overall_counter"
+    annotations: "@noWarn(\"unused\")"
+  }
+  spec {
+    unit: BOTH
+  }
+  size: 5
+}
+counters {
+  preamble {
+    id: 305510908
+    name: "IngressImpl.psfp_c.streamGate_c.not_passed_gate_counter"
+    alias: "not_passed_gate_counter"
+  }
+  spec {
+    unit: PACKETS
+  }
+  size: 5
+}
+counters {
+  preamble {
+    id: 309357270
+    name: "IngressImpl.psfp_c.streamGate_c.missed_interval_counter"
+    alias: "missed_interval_counter"
+  }
+  spec {
+    unit: PACKETS
+  }
+  size: 5
+}
+counters {
+  preamble {
+    id: 316478674
+    name: "IngressImpl.psfp_c.flowMeter_c.marked_red_counter"
+    alias: "marked_red_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  size: 2
+}
+counters {
+  preamble {
+    id: 305667898
+    name: "IngressImpl.psfp_c.flowMeter_c.marked_yellow_counter"
+    alias: "marked_yellow_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  size: 2
+}
+counters {
+  preamble {
+    id: 306749800
+    name: "IngressImpl.psfp_c.flowMeter_c.marked_green_counter"
+    alias: "marked_green_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  size: 2
+}
+direct_counters {
+  preamble {
+    id: 332440727
+    name: "IngressImpl.psfp_c.streamFilter_c.stream_id_counter"
+    alias: "stream_id_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 36254450
+}
+direct_counters {
+  preamble {
+    id: 324990094
+    name: "IngressImpl.psfp_c.streamFilter_c.stream_id_overwrite_counter"
+    alias: "stream_id_overwrite_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 36000467
+}
+direct_counters {
+  preamble {
+    id: 334000483
+    name: "IngressImpl.psfp_c.streamFilter_c.stream_filter_counter"
+    alias: "stream_filter_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 41560028
+}
+direct_counters {
+  preamble {
+    id: 319351701
+    name: "IngressImpl.psfp_c.streamFilter_c.max_sdu_filter_counter"
+    alias: "max_sdu_filter_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 42552499
+}
+direct_counters {
+  preamble {
+    id: 332096724
+    name: "IngressImpl.psfp_c.streamGate_c.stream_gate_counter"
+    alias: "stream_gate_counter"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 48007557
+}
+direct_counters {
+  preamble {
+    id: 323335299
+    name: "IngressImpl.ipv4_c.debug_counter"
+    alias: "debug_counter"
+  }
+  spec {
+    unit: PACKETS
+  }
+  direct_table_id: 42185026
+}
+direct_meters {
+  preamble {
+    id: 358022472
+    name: "IngressImpl.psfp_c.flowMeter_c.flow_meter"
+    alias: "flow_meter"
+  }
+  spec {
+    unit: BYTES
+  }
+  direct_table_id: 41006802
+}
+registers {
+  preamble {
+    id: 378613460
+    name: "IngressImpl.psfp_c.hyperperiod_duration_reg"
+    alias: "hyperperiod_duration_reg"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 48
+      }
+    }
+  }
+  size: 5
+}
+registers {
+  preamble {
+    id: 374652913
+    name: "IngressImpl.psfp_c.last_hyperperiod_reg"
+    alias: "last_hyperperiod_reg"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 48
+      }
+    }
+  }
+  size: 5
+}
+registers {
+  preamble {
+    id: 379244072
+    name: "IngressImpl.psfp_c.hyperperiod_done_reg"
+    alias: "hyperperiod_done_reg"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 1
+      }
+    }
+  }
+  size: 5
+}
+registers {
+  preamble {
+    id: 385281220
+    name: "IngressImpl.psfp_c.period_count"
+    alias: "period_count"
+    annotations: "@noWarn(\"unused\")"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 5
+}
+registers {
+  preamble {
+    id: 385411669
+    name: "IngressImpl.psfp_c.streamFilter_c.reg_filter_blocked"
+    alias: "reg_filter_blocked"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 1
+      }
+    }
+  }
+  size: 5
+}
+registers {
+  preamble {
+    id: 384683829
+    name: "IngressImpl.psfp_c.streamGate_c.reg_gate_blocked"
+    alias: "reg_gate_blocked"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 1
+      }
+    }
+  }
+  size: 4
+}
+registers {
+  preamble {
+    id: 383891534
+    name: "IngressImpl.psfp_c.streamGate_c.octets_per_interval"
+    alias: "octets_per_interval"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 373766868
+    name: "IngressImpl.psfp_c.streamGate_c.state_reset_octets"
+    alias: "state_reset_octets"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 12
+      }
+    }
+  }
+  size: 4
+}
+registers {
+  preamble {
+    id: 370222014
+    name: "IngressImpl.psfp_c.flowMeter_c.reg_meter_blocked"
+    alias: "reg_meter_blocked"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 1
+      }
+    }
+  }
+  size: 2
+}
+digests {
+  preamble {
+    id: 392389217
+    name: "digest_finished_hyperperiod_t"
+    alias: "digest_finished_hyperperiod_t"
+  }
+  type_spec {
+    struct {
+      name: "digest_finished_hyperperiod_t"
+    }
+  }
+}
+digests {
+  preamble {
+    id: 394889274
+    name: "digest_block_t"
+    alias: "digest_block_t"
+  }
+  type_spec {
+    struct {
+      name: "digest_block_t"
+    }
+  }
+}
+type_info {
+  structs {
+    key: "digest_block_t"
+    value {
+      members {
+        name: "stream_handle"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 16
+            }
+          }
+        }
+      }
+      members {
+        name: "stream_gate_id"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 12
+            }
+          }
+        }
+      }
+      members {
+        name: "egress_spec"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 9
+            }
+          }
+        }
+      }
+      members {
+        name: "PSFPGateEnabled"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 1
+            }
+          }
+        }
+      }
+      members {
+        name: "reason"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 3
+            }
+          }
+        }
+      }
+      members {
+        name: "color"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 2
+            }
+          }
+        }
+      }
+      members {
+        name: "flow_meter_instance_id"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 16
+            }
+          }
+        }
+      }
+    }
+  }
+  structs {
+    key: "digest_finished_hyperperiod_t"
+    value {
+      members {
+        name: "stream_gate_id"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 12
+            }
+          }
+        }
+      }
+      members {
+        name: "ingress_ts"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 48
+            }
+          }
+        }
+      }
+      members {
+        name: "hyperperiod_ts"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 48
+            }
+          }
+        }
+      }
+      members {
+        name: "last_hyperperiod"
+        type_spec {
+          bitstring {
+            bit {
+              bitwidth: 48
+            }
+          }
+        }
+      }
+    }
+  }
+}
